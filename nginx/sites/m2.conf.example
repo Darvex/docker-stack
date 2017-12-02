@@ -1,0 +1,6 @@
+server {
+    listen 80;
+    server_name magento2.dev;
+    set $MAGE_ROOT /var/www/magento2;
+    include sites-available/nginx_m2.config;
+}
