@@ -1,7 +1,5 @@
 server {
-
     listen 80;
-    listen [::]:80;
 
     server_name app.dev;
     root /var/www/app;
