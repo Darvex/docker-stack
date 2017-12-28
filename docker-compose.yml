@@ -122,26 +122,26 @@ services:
         - backend
 
 ### MongoDB Container #######################################
-
-    mongo:
-      build: ./mongo
-      ports:
-        - "${MONGODB_PORT}:27017"
-      volumes:
-        - ${DATA_SAVE_PATH}/mongo:/data/db
-      networks:
-        - backend
+#
+#    mongo:
+#      build: ./mongo
+#      ports:
+#        - "${MONGODB_PORT}:27017"
+#      volumes:
+#        - ${DATA_SAVE_PATH}/mongo:/data/db
+#      networks:
+#        - backend
 
 ### Redis Container #########################################
-
-    redis:
-      build: ./redis
-      volumes:
-        - ${DATA_SAVE_PATH}/redis:/data
-      ports:
-        - "${REDIS_PORT}:6379"
-      networks:
-        - backend
+#
+#    redis:
+#      build: ./redis
+#      volumes:
+#        - ${DATA_SAVE_PATH}/redis:/data
+#      ports:
+#        - "${REDIS_PORT}:6379"
+#      networks:
+#        - backend
 
 #### Memcached Container #####################################
 #

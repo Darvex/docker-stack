@@ -1,0 +1,16 @@
+server {
+    listen 80;
+    listen 443 ssl;
+
+    #ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+    #ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    server_name magento.dev;
+    root /var/www/magento;
+    index index.php index.html index.htm;
+
+    error_log /var/log/nginx/error.log;
+    #access_log /var/log/nginx/access.log;
+
+    include sites-available/nginx_m1.config;
+}

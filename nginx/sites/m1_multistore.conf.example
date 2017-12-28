@@ -1,0 +1,42 @@
+map $http_host $websiteCode {
+    my-domain.dev base;
+    my-second-domain.dev second;
+}
+
+server {
+    listen 80;
+    listen 443 ssl;
+
+    #ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+    #ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    server_name magento.dev;
+    root /var/www/magento;
+    index index.php index.html index.htm;
+
+    error_log /var/log/nginx/error.log;
+    #access_log /var/log/nginx/access.log;
+
+    include sites-available/nginx_m1_multistore.config;
+
+    #PHP configuration is declared here, as it requires website mapping
+    location ~ \.php$ {
+        if (!-e $request_filename) { rewrite / /index.php last; }
+
+        #do not cache dynamic content
+        expires off;
+
+        try_files $uri /index.php =404;
+        fastcgi_pass php-upstream;
+        fastcgi_index index.php;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+
+        #Magento website mapping
+        fastcgi_param MAGE_RUN_CODE $websiteCode;
+        fastcgi_param MAGE_RUN_TYPE website;
+        fastcgi_param MAGE_IS_DEVELOPER_MODE true;
+    }
+}
