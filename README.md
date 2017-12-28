@@ -62,3 +62,9 @@ function createDb {
 }
 alias db='createDb $1'
 ```
+
+Switch between installed Python versions within Workspace container
+```bash
+npm config set python /usr/bin/python2.7
+npm config set python /usr/bin/python3
+```
