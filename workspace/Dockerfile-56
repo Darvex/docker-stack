@@ -328,6 +328,19 @@ RUN \
 
 USER laradock
 
+#####################################
+## INSTALL n98-magerun & n98-magerun2
+#####################################
+USER root
+
+ADD magerun/n98-magerun.phar /usr/local/bin/n98magerun
+ADD magerun/n98-magerun2.phar /usr/local/bin/n98magerun2
+
+RUN chmod +x /usr/local/bin/n98magerun \
+    && chmod +x /usr/local/bin/n98magerun2
+
+USER laradock
+
 #
 #--------------------------------------------------------------------------
 # Final Touch
