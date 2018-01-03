@@ -316,6 +316,18 @@ RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
 
 USER laradock
 
+## INSTALL RUBY
+USER root
+RUN \
+  apt-get update \
+  && apt-get install -y ruby-dev
+
+RUN \
+    gem install bundler \
+    && gem install compass
+
+USER laradock
+
 #
 #--------------------------------------------------------------------------
 # Final Touch

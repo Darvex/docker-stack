@@ -1,5 +1,10 @@
 server {
     listen 80;
+    listen 443 ssl;
+
+    ssl_certificate /etc/nginx/ssl/localhost.certificate.crt;
+    ssl_certificate_key /etc/nginx/ssl/localhost.certificate.key;
+
     server_name magento2.dev;
     set $MAGE_ROOT /var/www/magento2;
     include sites-available/nginx_m2.config;

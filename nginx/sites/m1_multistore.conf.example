@@ -7,8 +7,8 @@ server {
     listen 80;
     listen 443 ssl;
 
-    #ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
-    #ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+    ssl_certificate /etc/nginx/ssl/localhost.certificate.crt;
+    ssl_certificate_key /etc/nginx/ssl/localhost.certificate.key;
 
     server_name magento.dev;
     root /var/www/magento;
