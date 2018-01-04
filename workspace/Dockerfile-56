@@ -341,6 +341,16 @@ RUN chmod +x /usr/local/bin/n98magerun \
 
 USER laradock
 
+#####################################
+## add SSH keys
+#####################################
+USER root
+
+ADD ~/.ssh/id_rsa ~/.ssh/id_rsa
+ADD ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub
+
+USER laradock
+
 #
 #--------------------------------------------------------------------------
 # Final Touch
