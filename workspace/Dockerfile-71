@@ -337,12 +337,14 @@ RUN chmod +x /usr/local/bin/n98magerun \
 USER laradock
 
 #####################################
-## add SSH keys
+## add SSH keys & composer token
 #####################################
-USER root
 
-ADD ~/.ssh/id_rsa ~/.ssh/id_rsa
-ADD ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub
+ADD ./ssh/id_rsa /home/laradock/.ssh/id_rsa
+ADD ./ssh/id_rsa.pub /home/laradock/.ssh/id_rsa.pub
+
+USER root
+ADD ./composer/auth.json /home/laradock/.composer/auth.json
 
 USER laradock
 

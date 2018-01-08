@@ -344,12 +344,23 @@ USER laradock
 #####################################
 ## add SSH keys
 #####################################
-USER root
 
-ADD ~/.ssh/id_rsa ~/.ssh/id_rsa
-ADD ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub
+ADD ./ssh/id_rsa /home/laradock/.ssh/id_rsa
+ADD ./ssh/id_rsa.pub /home/laradock/.ssh/id_rsa.pub
 
 USER laradock
+
+##
+# GIT GLOBAL CONFIG
+##
+RUN if [ ${GIT_GLOBAL_USERNAME} = true ]; then \
+    git config --global user.name "${GIT_GLOBAL_USERNAME}"
+;fi
+
+RUN if [ ${GIT_GLOBAL_EMAIL} = true ]; then \
+    git config --global user.email "${GIT_GLOBAL_EMAIL}"
+;fi
+
 
 #
 #--------------------------------------------------------------------------
