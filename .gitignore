@@ -4,3 +4,5 @@
 .env
 /.project
 .docker-sync
+workspace/composer
+workspace/ssh
